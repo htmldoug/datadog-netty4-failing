@@ -5,7 +5,8 @@ javaAgents += "com.datadoghq" % "dd-java-agent" % "0.12.0-SNAPSHOT"
 libraryDependencies ++= Seq(
   "org.asynchttpclient" % "async-http-client" % "2.0.0",
   "io.netty" % "netty-all" % "4.0.0.Final",
-  "io.opentracing" % "opentracing-api" % "0.31.0",
+  "ch.qos.logback" % "logback-classic" % "1.2.3",
+"io.opentracing" % "opentracing-api" % "0.31.0",
   "io.opentracing" % "opentracing-util" % "0.31.0",
   "com.datadoghq" % "dd-trace-ot" % "0.12.0-SNAPSHOT"
 )
