@@ -14,6 +14,7 @@ object DatadogTestApp {
 
     val asyncHttpClient: AsyncHttpClient = new DefaultAsyncHttpClient
 
+    GlobalTracer.get().activeSpan()
     val spanBuilder = GlobalTracer.get().buildSpan("parent")
     val span = spanBuilder.start()
     span.asInstanceOf[MutableSpan].setSamplingPriority(PrioritySampling.USER_KEEP)
