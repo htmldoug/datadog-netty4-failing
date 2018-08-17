@@ -20,7 +20,8 @@ libraryDependencies ++= Seq(
   "io.opentracing" % "opentracing-api" % "0.31.0",
   "io.opentracing" % "opentracing-util" % "0.31.0",
   "com.datadoghq" % "dd-trace-ot" % datadogAgentVersion,
-  "com.datadoghq" % "dd-trace-api" % datadogAgentVersion
+  "com.datadoghq" % "dd-trace-api" % datadogAgentVersion,
+  ws
 )
 
 javaAgents += "com.datadoghq" % "dd-java-agent" % datadogAgentVersion

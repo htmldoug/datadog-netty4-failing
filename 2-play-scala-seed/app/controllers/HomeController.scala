@@ -4,6 +4,7 @@ import io.opentracing.util.GlobalTracer
 import javax.inject._
 import org.slf4j.LoggerFactory
 import play.api.mvc._
+import play.api.libs.ws._
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -12,7 +13,7 @@ import scala.concurrent.{ExecutionContext, Future}
   * application's home page.
   */
 @Singleton
-class HomeController @Inject()(implicit ec: ExecutionContext) extends Controller {
+class HomeController @Inject()(ws: WSClient)(implicit ec: ExecutionContext) extends Controller {
 
   private val logger = LoggerFactory.getLogger(getClass)
 
@@ -29,8 +30,9 @@ class HomeController @Inject()(implicit ec: ExecutionContext) extends Controller
   }
 
   def post = Action.async(parse.anyContent) { request =>
-    Future {
-      spanResult
+    val request: WSRequest = ws.url("http://localhost:9000/futureMap")
+    request.get().map { resp =>
+      Ok(resp.body)
     }
   }
 
